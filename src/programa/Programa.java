@@ -33,20 +33,50 @@ public class Programa {
             switch (opcao) {
                 case 1:
                     System.out.println("Qual o id do cavalo? ");
+                    String nome;
                     int id = sc.nextInt();
-                    sc.nextLine();
-                    System.out.println("Qual o nome do cavalo? ");
-                    String nome = sc.nextLine();
-                    cadastrarCavalo(id, nome);
+                    int aprovacao = 0;
+                    for(Animal animal:lista){
+                        if(id == animal.getId()){
+                            aprovacao =1;
+                        }else {
+                            aprovacao = 0;
+                        }
+                    }
+                    if(aprovacao == 0){
+                        sc.nextLine();
+                        System.out.println("Qual o nome do cavalo? ");
+                        nome = sc.nextLine();
+                        cadastrarCavalo(id, nome);
+                        continue;
+                    } else if (aprovacao ==1) {
+                        System.out.println("ID ja existe");
+
+                    }
                     continue;
+
 
                 case 2:
                     System.out.println("Qual o id da Girafa? ");
                     id = sc.nextInt();
-                    sc.nextLine();
-                    System.out.println("Qual o nome da Girafa? ");
-                    nome = sc.nextLine();
-                    cadastrarGirafa(id, nome);
+                    aprovacao = 0;
+                    for(Animal animal:lista){
+                        if(id == animal.getId()){
+                            aprovacao =1;
+                        }else {
+                            aprovacao = 0;
+                        }
+                    }
+                    if(aprovacao == 0){
+                        sc.nextLine();
+                        System.out.println("Qual o nome da girafa? ");
+                        nome = sc.nextLine();
+                        cadastrarGirafa(id, nome);
+                        continue;
+                    } else if (aprovacao ==1) {
+                        System.out.println("ID ja existe");
+
+                    }
                     continue;
 
                 case 3:
@@ -79,7 +109,8 @@ public class Programa {
 
 
     private void removerAnimalPorId(int idRemove) {
-        Animal remover = new Animal();
+        Animal remover = new Animal() {
+        };
         int teste = 2;
         for (Animal animal : lista) {
             if (idRemove == animal.getId()) {
