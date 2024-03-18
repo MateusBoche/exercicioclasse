@@ -29,81 +29,115 @@ public class Programa {
             System.out.println("5- Listar Animais");
             System.out.println("6- Remover Animais");
             System.out.println("7- Listar animais por contagem");
-            int opcao = sc.nextInt();
-            switch (opcao) {
-                case 1:
-                    System.out.println("Qual o id do cavalo? ");
-                    String nome;
-                    int id = sc.nextInt();
-                    int aprovacao = 0;
-                    for(Animal animal:lista){
-                        if(id == animal.getId()){
-                            aprovacao =1;
-                        }else {
-                            aprovacao = 0;
+            int opcao = 0;
+
+            try {
+                System.out.println("opcao: ");
+                opcao = sc.nextInt();
+
+
+
+                switch (opcao) {
+                    case 1:
+                        System.out.println("Qual o id do cavalo? ");
+                        String nome;
+                        int id ;
+                        int aprovacao = 0;
+                        try{
+                            id = sc.nextInt();
+
+
+                            for(Animal animal:lista){
+                                if(id == animal.getId()){
+                                    aprovacao =1;
+                                    break;
+                                }else {
+                                    aprovacao = 0;
+                                    break;
+                                }
+                            }
+                            if(aprovacao == 0){
+                                sc.nextLine();
+                                System.out.println("Qual o nome do cavalo? ");
+                                nome = sc.nextLine();
+                                cadastrarCavalo(id, nome);
+                                break;
+                            } else if (aprovacao ==1) {
+                                System.out.println("ID ja existe");
+
+                            }
+                            break;
+
+
+
+                        }catch (Exception exception){
+                            System.out.println("Digite um numero inteiro!");
                         }
-                    }
-                    if(aprovacao == 0){
-                        sc.nextLine();
-                        System.out.println("Qual o nome do cavalo? ");
-                        nome = sc.nextLine();
-                        cadastrarCavalo(id, nome);
-                        continue;
-                    } else if (aprovacao ==1) {
-                        System.out.println("ID ja existe");
-
-                    }
-                    continue;
+                        break;
 
 
-                case 2:
-                    System.out.println("Qual o id da Girafa? ");
-                    id = sc.nextInt();
-                    aprovacao = 0;
-                    for(Animal animal:lista){
-                        if(id == animal.getId()){
-                            aprovacao =1;
-                        }else {
-                            aprovacao = 0;
+
+                    case 2:
+                        System.out.println("Qual o id da Girafa? ");
+                        id = sc.nextInt();
+                        aprovacao = 0;
+                        for(Animal animal:lista){
+                            if(id == animal.getId()){
+                                aprovacao =1;
+                                break;
+                            }else {
+                                aprovacao = 0;
+                                break;
+                            }
                         }
-                    }
-                    if(aprovacao == 0){
-                        sc.nextLine();
-                        System.out.println("Qual o nome da girafa? ");
-                        nome = sc.nextLine();
-                        cadastrarGirafa(id, nome);
-                        continue;
-                    } else if (aprovacao ==1) {
-                        System.out.println("ID ja existe");
+                        if(aprovacao == 0){
+                            sc.nextLine();
+                            System.out.println("Qual o nome da girafa? ");
+                            nome = sc.nextLine();
+                            cadastrarGirafa(id, nome);
+                            break;
+                        } else if (aprovacao ==1) {
+                            System.out.println("ID ja existe");
 
-                    }
-                    continue;
+                        }
+                        break;
 
-                case 3:
-                    System.out.println("Dados dos Cavalos: ");
-                    listarCavalo();
-                    continue;
+                    case 3:
+                        System.out.println("Dados dos Cavalos: ");
+                        listarCavalo();
+                        break;
 
-                case 4:
-                    System.out.println("Dados Girafas: ");
-                    listarGirafa();
-                    continue;
+                    case 4:
+                        System.out.println("Dados Girafas: ");
+                        listarGirafa();
+                        break;
 
-                case 5:
-                    listarAnimais();
-                    continue;
-                case 6:
-                    System.out.println("Digite o id que deseja remover: ");
-                    int idRemove = sc.nextInt();
-                    removerAnimalPorId(idRemove);
-                    continue;
-                case 7:
-                    exibirQuantidadePorTipo();
+                    case 5:
+                        listarAnimais();
+                        break;
+                    case 6:
+                        System.out.println("Digite o id que deseja remover: ");
+                        int idRemove = sc.nextInt();
+                        removerAnimalPorId(idRemove);
+                        break;
+                    case 7:
+                        exibirQuantidadePorTipo();
+                        break;
 
+
+                }
+
+
+            }catch (Exception e){
+                System.out.println("digite um numero inteiro");
+                sc.next();
+                continue;
 
             }
-        }
 
+
+
+        }
 
     }
 
