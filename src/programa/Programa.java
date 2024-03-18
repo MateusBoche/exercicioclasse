@@ -50,10 +50,11 @@ public class Programa {
                             for(Animal animal:lista){
                                 if(id == animal.getId()){
                                     aprovacao =1;
-                                    break;
+                                    if(aprovacao == 1){
+                                        break;
+                                    }
                                 }else {
                                     aprovacao = 0;
-                                    break;
                                 }
                             }
                             if(aprovacao == 0){
@@ -84,10 +85,11 @@ public class Programa {
                         for(Animal animal:lista){
                             if(id == animal.getId()){
                                 aprovacao =1;
-                                break;
+                                if(aprovacao == 1){
+                                    break;
+                                }
                             }else {
                                 aprovacao = 0;
-                                break;
                             }
                         }
                         if(aprovacao == 0){
